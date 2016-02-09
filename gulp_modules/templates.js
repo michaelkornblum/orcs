@@ -1,8 +1,5 @@
-import gulp from 'gulp';
 import lazypipe from 'lazypipe';
-import task from './task';
-import watch from './watch';
-
+import GulpObject from './GulpObject';
 let plugin = require('gulp-load-plugins')();
 
 let obj = {
@@ -18,5 +15,6 @@ let obj = {
   watchDir: './templates/**/*'
 }
 
-task(obj);
-watch(obj);
+let templates = new GulpObject(obj);
+templates.task();
+templates.watch();

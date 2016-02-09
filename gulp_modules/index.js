@@ -1,4 +1,5 @@
-require('./templates');
-require('./watchlist');
-require('./server');
-require('./default');
+import './templates';
+import './watchlist';
+import './server';
+import './webpack';
+import './default';
