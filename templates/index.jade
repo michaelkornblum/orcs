@@ -1,12 +1,12 @@
 doctype html
-html(ng-app)
+html(ng-app="app")
   head
     title Dive Log (AngularJS)
     link(rel="stylesheet" href="main.css")
   body 
     .container
       h1 My Latest Dives(AngularJS)
-      .row(ng-init="dives=[{site: 'Abu Gotta Ramada', location: 'Hurghada, Egypt', depth: 72, time: 54}, {site: 'Ponte Mahoon', location: 'Maehbourg, Mauritius', depth: 54, time: 38}, {site: 'Molnar Cave', location: 'Budapest, Hungary', depth: 98, time: 62}]")
+      .row(ng-controller="DiveLogCtrl")
         .col-sm-4(ng-repeat="dive in dives")
           h3 {{dive.site}}
           h4 {{dive.location}}
