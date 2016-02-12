@@ -14,4 +14,3 @@ let obj = {
 
 let webpack = new GulpObject(obj);
 webpack.task();
-webpack.watch();

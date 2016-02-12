@@ -1,3 +1,3 @@
 import gulp from 'gulp';
 
-gulp.task('default', ['watchlist', 'server']);
+gulp.task('default', ['webpack', 'watchlist', 'server']);

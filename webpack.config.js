@@ -1,30 +1,22 @@
 var path = require('path');
 var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var rupture = require('rupture');
 var typographic = require('typographic');
-
-var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 
 module.exports = {
-  //watch: true,
   entry: './scripts/app.js',
   output: {
     path: path.resolve('build/'),
     filename: "bundle.js",
   },
+  watch: true,
   plugins: [
     new ExtractTextPlugin("main.css"),
-    new UglifyJsPlugin()
+    new ngAnnotatePlugin({add: true})
   ],
   module: {
-    preLoaders: [
-      {
-        test: /\.js$/,
-        exclude: 'node_modules',
-        loader: 'jshint-loader'
-      }
-    ],
     loaders: [
       {
         test: /\.js$/,
@@ -40,6 +32,21 @@ module.exports = {
         test: /\.css$/,
         exclude: /node_modules/,
         loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+      },
+      {
+        test: /\.html$/,
+        exclude: /node_modules/,
+        loader: "raw-loader"
+      },
+      {
+        test: /\.(png|jpg|jpeg)$/,
+        exclude: /node_modules/,
+        loader: 'url?limit=10000!img?optimizationLevel=3&progressive=true'
+      },
+      {
+        test: /\.(woff2|woff|eot|ttf|svg)$/,
+        exclude: /node_modules/,
+        loader: 'url?limit=10000'
       }
     ]
   },
@@ -48,6 +55,6 @@ module.exports = {
     import: ['~typographic/stylus/typographic.styl']
   },
   resolve: {
-    extensions: ['', '.js', '.es6', '.css', '.styl']
+    extensions: ['', '.js', '.es6', '.css', '.styl', '.jpg', '.jpeg', '.png']
   }
 }

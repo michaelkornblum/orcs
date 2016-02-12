@@ -1,8 +1,15 @@
 doctype html
-html
+html(ng-app)
   head
-    title Open Roleplaying Character Suite
+    title Dive Log (AngularJS)
     link(rel="stylesheet" href="main.css")
-  body
-    h1 Open Roleplaying Character Suite
+  body 
+    .container
+      h1 My Latest Dives(AngularJS)
+      .row(ng-init="dives=[{site: 'Abu Gotta Ramada', location: 'Hurghada, Egypt', depth: 72, time: 54}, {site: 'Ponte Mahoon', location: 'Maehbourg, Mauritius', depth: 54, time: 38}, {site: 'Molnar Cave', location: 'Budapest, Hungary', depth: 98, time: 62}]")
+        .col-sm-4(ng-repeat="dive in dives")
+          h3 {{dive.site}}
+          h4 {{dive.location}}
+          h2 {{dive.depth}} feet | {{dive.time}} mins
     script(src="bundle.js")
+    
