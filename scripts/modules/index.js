@@ -1,3 +1,3 @@
 module.exports = function (app) {
-  require('./dive-log-ctrl')(app);
+  require('./site-edit-ctrl')(app);
 }
