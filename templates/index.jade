@@ -3,55 +3,33 @@ html(ng-app="app")
   head
     title Dive Sites
     link(rel="stylesheet" href="main.css")
-  body 
-    .container-fluid(ng-controller="SiteEditCtrl")
-      h1 Dive Sites Maintenance
-      div(ng-show="view=='list'")
-        .row
-          .col-sm-12
-            button.btn.btn-primary.btn-lg(ng-click="startAdd()") Add New Dive
-        h2 List of Dive Sites
-        .row(ng-repeat="site in sites" ng-class="{oddRow: $index % 2 == 0}")
-          .col-sm-8
-            h4 {{$index + 1}}: {{site}}
-          .col-sm-4(style="margin-top: 5px;")
-            .pull-right
-              button.btn.btn-warning.btn-small(ng-click="startEdit($index)") Edit   
-              button.btn.btn-danger.btn-small(ng-click="startRemove($index)") Delete
+  body(ng-controller="AdminCtrl")
+    nav.navbar.navbar-default.navbar-fixed-top(role="navigation")
+      .container
+        button.navbar-toggle.collapsed(type="button" data-toggle="collapse" data-target="#adminMenu")
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar 
+        a.navbar-brand(href="#" ng-click="showMain()") Younderwater Admin
+        .collapse.navbar-collapse#adminMenu
+          ul.nav.navbar-nav
+            li(ng-class="{active: isActive('Locations')}")
+              a(href="#/locations") Locations
+            li(ng-class="{active: isActive('Sites')}")
+              a(href="#/sites") Dive Sites 
+    
+      .current-spot
+        .container-fluid(ng-show="!isActive('')")
+          .container
+            h3 {{getTitle()}}
               
-      div(ng-show="view=='add'")
-        h3 Specify the name of the dive site:
-        .row
-          .col-sm-6
-            input.form-control.input-lg(type="text" placeholder="site name" ng-model="siteBox")
-        .row(style="margin-top: 12px;")
-          .col-sm-6
-            button.btn.btn-success.btn(ng-disabled="siteBox==''" ng-click="add()") Add
-            button.btn.btn-warning.btn(ng-click="cancel()") Cancel
-            
-      div(ng-show="view=='edit'")
-        h3 Edit the name of the dive site:
-        .row
-          .col-sm-6
-            input.form-control.input-lg(type="text" plaeholder="site name" ng-model="siteBox")
-        .row(style="margin-top: 12px;")
-          .col-sm-6
-            button.btn.btn-success.btn(ng-disabled="siteBox==''" ng-click="save()") Save
-            button.btn.ben-warning.btn(ng-click="cancel()") Cancel        
-    
-      div(ng-show="view=='delete'")
-        h3 Confirm Delete   
-          .row
-            .col-sm-6
-              p Are you sure you want to delete dive site '{{getSelected()}}'?
-          .row(style="margin-top: 12px;")
-            .col-sm-6
-              button.btn.btn-success.btn(ng-click="cancel()") No
-              button.btn.btn-danger.btn(ng-click="remove()") Yes
-              
-
-    
-  script(src="bundle.js")
-    
+      .main-content
+        .container-fluid
+          .container  
+            div(ng-view)
+        
+  
+    script(src="bundle.js")  
       
     

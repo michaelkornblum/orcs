@@ -11,7 +11,7 @@ module.exports = {
     path: path.resolve('build/'),
     filename: "bundle.js",
   },
-  watch: true,
+  //watch: true,
   plugins: [
     new ExtractTextPlugin("main.css"),
     new ngAnnotatePlugin({add: true})
@@ -44,10 +44,28 @@ module.exports = {
         loader: 'url?limit=10000!img?optimizationLevel=3&progressive=true'
       },
       {
-        test: /\.(woff2|woff|eot|ttf|svg)$/,
-        exclude: /node_modules/,
-        loader: 'url?limit=10000'
-      }
+        test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
+        loader: "url?limit=10000&mimetype=application/font-woff"
+      },
+      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        loader: "url?limit=10000&mimetype=application/octet-stream"
+      },
+      {
+         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+         loader: "file"
+      },
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        loader: "url?limit=10000&mimetype=image/svg+xml"
+      },
+      {
+        test: /bootstrap\/js\//,
+        loader: 'imports?jQuery=jquery'
+      },
+      {
+        test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
+        loader: "url?limit=10000&mimetype=application/font-woff"
+      },
     ]
   },
   stylus: {
