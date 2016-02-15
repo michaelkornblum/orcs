@@ -11,7 +11,7 @@ module.exports = {
     path: path.resolve('build/'),
     filename: "bundle.js",
   },
-  //watch: true,
+  watch: true,
   plugins: [
     new ExtractTextPlugin("main.css"),
     new ngAnnotatePlugin({add: true})
