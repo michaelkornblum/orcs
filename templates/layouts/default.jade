@@ -1,6 +1,10 @@
 doctype html
-html
+html(ng-app="app")
   head
-    title Open Roleplaying Character Suite
+    title Open Roleplaying Character Service
+    link(rel="stylesheet" href="main.css")
   body
-    h1 Greeting and salutations.
+    include ./partials/navbar.jade
+    block content
+    
+    script(src="bundle.js")
