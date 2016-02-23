@@ -2,35 +2,31 @@ extends ./layouts/default.jade
 
 block content
   .container
-    .row
-      .col-sm-8
-        h1 Michael Kornblum: Characters
-    .row
-      .panel-group
-        .col-md-6
-          .panel.panel-default
-            .panel-heading
-              .row
-                .col-sm-6
-                  h2 Nathaniel Profit
-                .col-sm-6
-                  .btn-group.pull-right
-                    button.btn.btn-lg.btn-default(data-toggle="tooltip" title="view")
-                      span.glyphicon.glyphicon-eye-open
-                    button.btn.btn-lg.btn-default(data-toggle="tooltip" title="edit")
-                      span.glyphicon.glyphicon-pencil
-                    button.btn.btn-lg.btn-default(data-toggle="tooltip" title="level up")
-                      span.glyphicon.glyphicon-arrow-up
-                    button.btn.btn-lg.btn-default(data-toggle="tooltip" title="delete")
-                      span.glyphicon.glyphicon-remove-sign
-            .panel-body
-              img.img-responsive.img-thumbnail(src="images/cleric.jpg")
-              ul
-                li Race: Human
-                li Class: Cleric 4
-                li Alignment: Lawful Neutral
-                li Campaign: Jeff's Forgotten Realms
-                li Status: Active
+    .panel-group
+      .col-md-4
+        .panel.panel-default
+          .panel-heading
+            .row
+              .col-sm-12
+                h2 Nathaniel Profit
+              .col-sm-12
+                .btn-group
+                  button.btn.btn-lg.btn-default(data-toggle="tooltip" title="view")
+                    span.glyphicon.glyphicon-eye-open
+                  button.btn.btn-lg.btn-default(data-toggle="tooltip" title="edit")
+                    span.glyphicon.glyphicon-pencil
+                  button.btn.btn-lg.btn-default(data-toggle="tooltip" title="level up")
+                    span.glyphicon.glyphicon-arrow-up
+                  button.btn.btn-lg.btn-default(data-toggle="tooltip" title="delete")
+                    span.glyphicon.glyphicon-remove-sign
+          .panel-body
+            img.img-responsive.img-thumbnail(src="images/cleric.jpg")
+            ul
+              li Race: Human
+              li Class: Cleric 4
+              li Alignment: Lawful Neutral
+              li Campaign: Jeff's Forgotten Realms
+              li Status: Active
               
 
 
